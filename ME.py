@@ -24,7 +24,7 @@ try:
     money = int(input(bot + 'Ingresa la cantidad de dinero que desees gastar: '))
 
 except:
-    print("error, ese numero no existe")
+    print(bot + "error, ese numero no existe")
 else:
 
     print(money)
@@ -75,7 +75,7 @@ else:
         ascii_menu()
 
         try:
-            opcion = int(input('Selecciona una opcion: '))
+            opcion = int(input(bot + 'Selecciona una opcion: '))
 
             clear()
 
@@ -83,19 +83,20 @@ else:
             if opcion == 1:
                 ascii_comprar()
 
-                bebida = int(input("Selecciona una compra: "))
+                bebida = int(input(bot + 'Selecciona una compra: '))
 
                 # Comprar Pepsi
                 if bebida == 1 and money >= 5:
                     bebidas.append('Pepsi')
                     money -= 5
-                    print(f"Has comprado una Pepsi, tienes ahora {money}$")
-
+                    clear()
+                    print(f'{bot}Has comprado una Pepsi, tienes ahora {money}$')
                 # Comprar Cocacola
                 elif bebida == 2 and money >= 5:
                     bebidas.append("Cocacola")
+                    clear()
                     money -= 5
-                    print(f"Has comprado una Cocacola, tienes ahora {money}$")
+                    print(f'{bot}Has comprado una Cocacola, tienes ahora {money}$')
 
                 # Regresar
                 elif bebida == 3:
@@ -113,28 +114,30 @@ else:
             ---------------------
             |   Vista General   |
             ---------------------
-            {bebidas}
-        
-        
-        """)
+            {bebidas} 
+""")
         
                 vender = input(Fore.RED + "Escribe la bebida que deseas vender: " + '\033[39m')
-        
-                if vender == 'pepsi':
-                    vender.lower()
+
+                if vender.upper() == 'PEPSI':
                     bebidas.remove('Pepsi')
+                    money += 3
+                    clear()
+                    print(bot + 'La bebida "Pepsi" ha sido vendida :D!')
         
-                elif vender == 'cocacola':
-                    vender.lower()
+                elif vender.upper() == 'COCACOLA':
                     bebidas.remove('Cocacola')
+                    money += 2
+                    clear()
+                    print(bot + 'La bebida "Cocacola" ha sido vendida :D!')
                 else:
-                    print('No existe esa bebida')
+                    print(bot + 'Creo que has escrito mal la bebida o no existe')
         
             # Salir
             if opcion == 3:
                 os._exit(os.EX_OK)
         
         except ValueError:
-            print("Error, ese numero no es valido")
+            print(bot + "Error, ese numero no es valido")
             break
         
