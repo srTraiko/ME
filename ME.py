@@ -7,7 +7,7 @@ bebidas = []
 
 # Limpiar consola
 def clear():
-    if os.system == "nt":
+    if os.name == "nt":
         os.system("cls")
     else:
         os.system("clear")
